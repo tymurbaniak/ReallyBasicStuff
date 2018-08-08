@@ -1,0 +1,70 @@
+<html>
+<head>
+<script
+  src="https://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+<style>
+table, tr, td{
+	border: 1px;
+	border-style: solid;
+}
+</style>
+</head>
+<body>
+<table>
+<tr><th><input type="checkbox" id="disable_all"></th><th>firstlol</th></tr>
+<tr><td><input type="checkbox" class="disable"></td><td>LoL</td></tr>
+<tr><td><input type="checkbox" class="disable"></td><td>LoL</td></tr>
+<tr><td><input type="checkbox" class="disable"></td><td>LoL</td></tr>
+<tr><td><input type="checkbox" class="disable"></td><td>LoL</td></tr>
+<tr><td><input type="checkbox" class="disable"></td><td>LoL</td></tr>
+<tr><td><input type="checkbox" class="disable"></td><td>LoL</td></tr>
+<tr><td><input type="checkbox" class="disable"></td><td>LoL</td></tr>
+</table>
+</body>
+</html>
+
+<script type="text/javascript">
+$('#disable_all').change(function (){
+	if(this.checked === true){
+		$('.disable').each(function (index, element){
+			enableRow(element);			
+		});
+	}else{
+		$('.disable').each(function (index, element){
+			disableRow(element);			
+		});
+	}
+	
+});
+
+$(document).ready(function (){
+	$('#disable_all')[0].checked = true;
+	
+	$('.disable').each(function (index, element){
+		enableRow(element);			
+	});
+});
+
+$('.disable').change(function (){
+	let checkbox = $(this);
+	if(this.checked === true){
+		enableRow(checkbox);
+	}else{
+		disableRow(checkbox);
+	}
+});
+
+function disableRow(element){
+	$('#disable_all')[0].checked = false;
+	element.checked = false;
+	jQuery(element).closest('tr').css('color', '#ff0000');
+}
+
+function enableRow(element){
+	element.checked = true;
+	jQuery(element).closest('tr').css('color', '#000000');
+}
+
+</script>
